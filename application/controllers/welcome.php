@@ -19,8 +19,9 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$dato['string'] = ':D';
-		$this->load->view('welcome_message',$dato);
+		$this->load->view('layouts/header');
+		$this->load->view('welcome_message');
+		$this->load->view('layouts/footer');
 	}
 }
 /* End of file welcome.php */

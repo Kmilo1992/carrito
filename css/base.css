@@ -1,0 +1,70 @@
+*{
+	margin: 0px;
+}
+body,html{
+	background-color: #E2E1D7;
+	font-family: Arial, "Helvetica";
+}
+#h{
+	background: url(../imgs/back.png);
+	color: #E2E1D7;
+	font-weight: bolder;
+}
+#h h1, #n{
+	display: inline-block;
+}
+#h h1{
+	font-family: 'BazarMedium';
+	letter-spacing: 10px;
+	text-align: center;
+	font-size: 2.5em;
+	text-shadow: 0px 3px 0px #b2a98f,
+             0px 14px 10px rgba(0,0,0,0.15),
+             0px 24px 2px rgba(0,0,0,0.1),
+             0px 34px 30px rgba(0,0,0,0.1);
+	width: 25%;
+}
+#main{
+	width: 80%;
+	margin: 0 auto;
+	padding: 10px;
+	
+}
+#n{
+	width: 70%;
+	text-align: right;
+}
+#n ul li{
+	display: inline-block;
+	padding: 5px;
+}
+#n ul li:hover{
+	background-color: #E2E1D7;
+	color: #000;
+	border-radius: 2px;
+	cursor: pointer;
+}
+.title{
+	font-family: 'BazarMedium';
+	font-weight: bolder;
+	color: #6A666F;
+	text-shadow:2px 2px 4px rgba(0,0,0,0.8);
+	font-size: 2em;
+}
+
+/* Formularios */
+form{
+	background-color: transparent;
+}
+.input{
+	margin: 0.6em;
+}
+.input label{
+	clear: left;
+	width: 10%;
+	display: inline-block;
+}
+.input input{
+	width: 30%;
+	
+}
