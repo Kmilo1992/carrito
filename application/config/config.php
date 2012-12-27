@@ -14,7 +14,12 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/carrito';
+//$config['base_url']	= 'http://localhost/carrito';
+
+
+// Roof base_url
+$config['base_url']	= 'http://localhost/codigoF/carrito';
+
 
 /*
 |--------------------------------------------------------------------------
