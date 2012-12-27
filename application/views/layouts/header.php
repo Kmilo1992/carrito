@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='es'>
 <head>
-	<title>Código Facilito store</title>
+	<title>Código Facilito Store</title>
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/extras.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/base.css">
