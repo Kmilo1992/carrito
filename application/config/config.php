@@ -17,8 +17,8 @@
 //$config['base_url']	= 'http://localhost/carrito';
 
 
-// Roof base_url
-$config['base_url']	= 'http://localhost/codigoF/carrito';
+// No es necesario especificar la ruta, tomará la del directorio.
+$config['base_url']	= '';
 
 
 /*
