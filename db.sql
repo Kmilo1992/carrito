@@ -23,7 +23,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Usuario`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Usuario` (
-  `idUsuario` INT NOT NULL ,
+  `idUsuario` INT NOT NULL AUTO_INCREMENT ,
   `nombre` VARCHAR(45) NOT NULL ,
   `apPat` VARCHAR(45) NOT NULL ,
   `apMat` VARCHAR(45) NULL ,
@@ -86,7 +86,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Cupon`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Cupon` (
-  `idCupon` INT NOT NULL ,
+  `idCupon` INT NOT NULL AUTO_INCREMENT ,
   `fechaInicio` DATETIME NULL ,
   `fechaFin` VARCHAR(45) NULL ,
   `cantidad` DOUBLE NULL ,
@@ -100,7 +100,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Categoria`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Categoria` (
-  `idCategoria` INT NOT NULL ,
+  `idCategoria` INT NOT NULL AUTO_INCREMENT ,
   `nombreCategoria` VARCHAR(45) NOT NULL ,
   `categoriaPadre` INT NOT NULL ,
   PRIMARY KEY (`idCategoria`) ,
@@ -139,7 +139,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Oferta`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Oferta` (
-  `idOferta` INT NOT NULL ,
+  `idOferta` INT NOT NULL AUTO_INCREMENT ,
   `idProducto` INT NOT NULL ,
   `descuento` DOUBLE NOT NULL ,
   `inicioOferta` DATETIME NULL ,
@@ -158,13 +158,13 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Venta`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Venta` (
-  `idVenta` INT NOT NULL ,
+  `idVenta` INT NOT NULL AUTO_INCREMENT ,
   `idComprador` INT NOT NULL ,
   `idProducto` INT NOT NULL ,
   `idCupon` INT NOT NULL ,
   `cantidad` INT NOT NULL DEFAULT 1 ,
   `fechaVenta` VARCHAR(45) NULL ,
-  PRIMARY KEY (`idVenta`, `idProducto`, `idComprador`) ,
+  PRIMARY KEY (`idVenta`, `idComprador`, `idProducto`) ,
   INDEX `fk_Venta_Usuario1_idx` (`idComprador` ASC) ,
   INDEX `fk_Venta_Producto1_idx` (`idProducto` ASC) ,
   INDEX `fk_Venta_Cupon1_idx` (`idCupon` ASC) ,
@@ -181,6 +181,22 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Venta` (
   CONSTRAINT `fk_Venta_Cupon1`
     FOREIGN KEY (`idCupon` )
     REFERENCES `mydb`.`Cupon` (`idCupon` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Etiqueta`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `mydb`.`Etiqueta` (
+  `nombre` VARCHAR(50) NOT NULL ,
+  `idProducto` INT NOT NULL ,
+  PRIMARY KEY (`nombre`, `idProducto`) ,
+  INDEX `fk_Etiqueta_Producto1_idx` (`idProducto` ASC) ,
+  CONSTRAINT `fk_Etiqueta_Producto1`
+    FOREIGN KEY (`idProducto` )
+    REFERENCES `mydb`.`Producto` (`idProducto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
