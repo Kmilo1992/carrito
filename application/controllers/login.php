@@ -12,22 +12,22 @@ class Login extends CI_Controller
 		if($this->session->userdata('usrTienda'))
 		{
 			redirect(base_url(),'refresh');
-			exit();
+			exit(0);
 		}else{
-			if(/*informacion enviada del form*/){
+			if($this->input->post('usr') && $this->input->post('pwd')){
 
-				$usr = $_POST[];
-				$pwd = $_POST[];
+				$usr = $this->input->post('usr');
+				$pwd = $this->input->post('pwd');
 
 				$esUsuario = $this->login_model->es_usuario($usr,$pwd);
 
 				if($esUsuario){
-					$this->session->set_userdata('usrTienda',$isUser)
+					$this->session->set_userdata('usrTienda',$isUser);
 				}else{//Usuario/Contrasena incorrecta
 					$data['logged'] = false;
 					$data['failure'] = true;
 
-					$this->load->view(/*Vista login simple*/);
+					$this->load->view('login');
 
 				}
 			}else//No se envio informacion
