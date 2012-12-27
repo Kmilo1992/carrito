@@ -14,18 +14,15 @@ class Productos_model extends CI_Model {
 		return TRUE;
 	}
 	function obtenerUltimoId(){
-		$q = "select * from producto order by idproducto desc limit 1";
-		$query = $this->db->query($q);
-		if($query->num_rows() > 0){
-			$id = 0;
-			foreach ($query->result() as $row) {
-				$id = $row->idProducto;
-			}
-			return $id;
+		
+		$qry = "SHOW TABLE STATUS WHERE name='producto'";
+		$ejec = $this->db->query($qry);
+			
+		foreach ($ejec->result() as $row) {
+			$id = $row->Auto_increment;
 		}
-		else{
-			return FALSE;
-		}
+
+		return $id;
 	}
 	function obtenerUltimos($limite){
 		$q = "select * from producto order by idproducto desc limit ".$limite;

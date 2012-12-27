@@ -4,7 +4,7 @@
 		foreach ($productos->result() as $producto) { ?>
 		<div class="span7">
 			<div class="span3">
-				<img src="<?=base_url()?>imgsP/<?=$producto->url_img?>">
+				<img src="<?=base_url()?>imgsP/<?= $producto->url_img ?>">
 			</div>
 			<div class="span2">
 				<h1><?= $producto->nombre ?></h1>
