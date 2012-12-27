@@ -9,6 +9,7 @@ body,html{
 	background: url(../imgs/back.png);
 	color: #E2E1D7;
 	font-weight: bolder;
+	padding: 10px;
 }
 #h h1, #n{
 	display: inline-block;
@@ -25,10 +26,14 @@ body,html{
 	width: 25%;
 }
 #main{
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
-	padding: 10px;
-	
+	padding: 10px;	
+}
+.span7 .span3, .span7 .span2{
+	float: none;
+	display: inline-block;
+	vertical-align: middle;
 }
 #n{
 	width: 70%;

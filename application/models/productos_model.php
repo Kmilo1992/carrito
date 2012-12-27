@@ -27,5 +27,15 @@ class Productos_model extends CI_Model {
 			return FALSE;
 		}
 	}
+	function obtenerUltimos($limite){
+		$q = "select * from producto order by idproducto desc limit ".$limite;
+		$query = $this->db->query($q);
+		if($query->num_rows() > 0){
+			return $query;
+		}
+		else{
+			return FALSE;
+		}
+	}
 }
 ?>

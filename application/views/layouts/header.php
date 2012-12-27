@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/extras.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/base.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/normalize.css">
+	
 	<meta charset='utf-8'>
 </head>
 <body>
