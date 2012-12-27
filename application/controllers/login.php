@@ -20,11 +20,11 @@ class Login extends CI_Controller
 				$usr = $_POST[];
 				$pwd = $_POST[];
 
-				$isUser = $this->login_model->is_user($usr,$pwd);
+				$esUsuario = $this->login_model->es_usuario($usr,$pwd);
 
-				if($isUser){
+				if($esUsuario){
 					$this->session->set_userdata('usrTienda',$isUser)
-				}else{
+				}else{//Usuario/Contrasena incorrecta
 					$data['logged'] = false;
 					$data['failure'] = true;
 
@@ -35,7 +35,7 @@ class Login extends CI_Controller
 				redirect(base_url(),'refresh');
 
 		}
-	}
+	}//Fin index()
 }
 
 ?>
