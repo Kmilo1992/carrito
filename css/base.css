@@ -11,6 +11,9 @@ body,html{
 	font-weight: bolder;
 	padding: 10px;
 }
+#h a{
+	color: inherit;
+}
 #h h1, #n{
 	display: inline-block;
 }
@@ -63,6 +66,11 @@ form{
 }
 .input{
 	margin: 0.6em;
+
+}
+.input .alert{
+	width: 40%;
+	display: none;
 }
 .input label{
 	clear: left;
