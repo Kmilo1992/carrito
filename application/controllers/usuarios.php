@@ -4,6 +4,7 @@ class Usuarios extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('usuarios_model');		
+		
 	}
 	function nuevo(){
 		$this->load->view('layouts/header');
@@ -17,7 +18,7 @@ class Usuarios extends CI_Controller {
 			'mat' => $this->input->post('mat'),
 			'username' => $this->input->post('username'),
 			'email' => $this->input->post('email'),
-			'password' => $this->input->post('password')
+			'password' => $this->input->post('password'),
 		);
 		if($this->usuarios_model->crearUsuario($data)){
 			//TODO
@@ -26,6 +27,11 @@ class Usuarios extends CI_Controller {
 		else{
 			//TODO	
 		}
+	}
+	function ocupado(){
+		$username = $this->input->post('username');
+		if(!$this->usuarios_model->esta_ocupado($username)) echo "FALSE";
+		else echo "TRUE";
 	}
 }
 ?>

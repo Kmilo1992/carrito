@@ -68,8 +68,7 @@ form{
 	margin: 0.6em;
 
 }
-.input .alert{
-	width: 40%;
+.alert{
 	display: none;
 }
 .input label{
