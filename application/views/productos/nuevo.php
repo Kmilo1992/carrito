@@ -1,5 +1,5 @@
 <span class='title'>Nuevo Producto</span>
-<form action='crear' method='post'>
+<? echo form_open_multipart('productos/crear'); ?>
 	<div class="input">
 		<label>Nombre: </label>
 		<input type='text' placeholder='Nombre Producto' name='nombre'>
@@ -7,6 +7,10 @@
 	<div class="input">
 		<label>Existencia: </label>
 		<input type='text' placeholder='Cantidad en inventario' name='existencia'>
+	</div>
+	<div class="input">
+		<label>Imagen: </label>
+		<input type='file' name='userfile'>
 	</div>
 	<div class="input">
 		<label>Costo: </label>

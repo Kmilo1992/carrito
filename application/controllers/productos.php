@@ -18,12 +18,26 @@ class Productos extends CI_Controller {
 		$this->load->view('layouts/footer');	
 	}
 	public function crear(){
+		$idImg = $this->productos_model->obtenerUltimoId();	
+		if($idImg) $idImg = (int) $idImg;
+		$idImg++;
 		$data = array(
 			'nombre' => $this->input->post('nombre'),
 			'existencia' => $this->input->post('existencia'),
-			'costo' => $this->input->post('costo')
+			'costo' => $this->input->post('costo'),
+			'url' => $idImg
 		);
-		$this->productos_model->guardar($data);
+		$config['upload_path'] = realpath(APPPATH . '../imgsP');
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|';
+        $config['file_name'] = $idImg."";
+        $config['max_size'] = 1000;
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload()){
+        	$this->productos_model->guardar($data);	
+        }
+        else{
+        	redirect(base_url()."index.php/productos/nuevo");
+        }
 		redirect(base_url());
 	}
 }

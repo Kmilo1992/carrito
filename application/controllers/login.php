@@ -14,7 +14,6 @@ class Login extends CI_Controller
 			redirect(base_url(),'refresh');
 			exit();
 		}else{
-
 			if(/*informacion enviada del form*/){
 
 				$usr = $_POST[];

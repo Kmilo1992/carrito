@@ -2,13 +2,13 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `codigofacilito_carrito` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
-USE `codigofacilito_carrito` ;
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
+USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `codigofacilito_carrito`.`Producto`
+-- Table `mydb`.`Producto`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Producto` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`Producto` (
   `idProducto` INT NOT NULL AUTO_INCREMENT ,
   `nombre` VARCHAR(100) NOT NULL ,
   `url_img` VARCHAR(80) NULL ,
@@ -20,9 +20,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `codigofacilito_carrito`.`Usuario`
+-- Table `mydb`.`Usuario`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Usuario` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`Usuario` (
   `idUsuario` INT NOT NULL AUTO_INCREMENT ,
   `nombre` VARCHAR(45) NOT NULL ,
   `apPat` VARCHAR(45) NOT NULL ,
@@ -37,9 +37,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `codigofacilito_carrito`.`Deseo`
+-- Table `mydb`.`Deseo`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Deseo` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`Deseo` (
   `idProducto` INT NOT NULL ,
   `idUsuario` INT NOT NULL ,
   PRIMARY KEY (`idProducto`, `idUsuario`) ,
@@ -47,21 +47,21 @@ CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Deseo` (
   INDEX `fk_Producto_has_Usuario_Producto_idx` (`idProducto` ASC) ,
   CONSTRAINT `fk_Producto_has_Usuario_Producto`
     FOREIGN KEY (`idProducto` )
-    REFERENCES `codigofacilito_carrito`.`Producto` (`idProducto` )
+    REFERENCES `mydb`.`Producto` (`idProducto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Producto_has_Usuario_Usuario1`
     FOREIGN KEY (`idUsuario` )
-    REFERENCES `codigofacilito_carrito`.`Usuario` (`idUsuario` )
+    REFERENCES `mydb`.`Usuario` (`idUsuario` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `codigofacilito_carrito`.`Apartado`
+-- Table `mydb`.`Apartado`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Apartado` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`Apartado` (
   `idProducto` INT NOT NULL ,
   `idUsuario` INT NOT NULL ,
   `fechaApartado` DATETIME NOT NULL ,
@@ -71,21 +71,21 @@ CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Apartado` (
   INDEX `fk_Producto_has_Usuario_Producto1_idx` (`idProducto` ASC) ,
   CONSTRAINT `fk_Producto_has_Usuario_Producto1`
     FOREIGN KEY (`idProducto` )
-    REFERENCES `codigofacilito_carrito`.`Producto` (`idProducto` )
+    REFERENCES `mydb`.`Producto` (`idProducto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Producto_has_Usuario_Usuario2`
     FOREIGN KEY (`idUsuario` )
-    REFERENCES `codigofacilito_carrito`.`Usuario` (`idUsuario` )
+    REFERENCES `mydb`.`Usuario` (`idUsuario` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `codigofacilito_carrito`.`Cupon`
+-- Table `mydb`.`Cupon`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Cupon` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`Cupon` (
   `idCupon` INT NOT NULL AUTO_INCREMENT ,
   `fechaInicio` DATETIME NULL ,
   `fechaFin` VARCHAR(45) NULL ,
@@ -97,9 +97,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `codigofacilito_carrito`.`Categoria`
+-- Table `mydb`.`Categoria`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Categoria` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`Categoria` (
   `idCategoria` INT NOT NULL AUTO_INCREMENT ,
   `nombreCategoria` VARCHAR(45) NOT NULL ,
   `categoriaPadre` INT NOT NULL ,
@@ -107,16 +107,16 @@ CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Categoria` (
   INDEX `fk_Categoria_Categoria1_idx` (`categoriaPadre` ASC) ,
   CONSTRAINT `fk_Categoria_Categoria1`
     FOREIGN KEY (`categoriaPadre` )
-    REFERENCES `codigofacilito_carrito`.`Categoria` (`idCategoria` )
+    REFERENCES `mydb`.`Categoria` (`idCategoria` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `codigofacilito_carrito`.`CategoriaProducto`
+-- Table `mydb`.`CategoriaProducto`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`CategoriaProducto` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`CategoriaProducto` (
   `idProducto` INT NOT NULL ,
   `idCategoria` INT NOT NULL ,
   PRIMARY KEY (`idProducto`, `idCategoria`) ,
@@ -124,21 +124,21 @@ CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`CategoriaProducto` (
   INDEX `fk_Producto_has_Categoria_Producto1_idx` (`idProducto` ASC) ,
   CONSTRAINT `fk_Producto_has_Categoria_Producto1`
     FOREIGN KEY (`idProducto` )
-    REFERENCES `codigofacilito_carrito`.`Producto` (`idProducto` )
+    REFERENCES `mydb`.`Producto` (`idProducto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Producto_has_Categoria_Categoria1`
     FOREIGN KEY (`idCategoria` )
-    REFERENCES `codigofacilito_carrito`.`Categoria` (`idCategoria` )
+    REFERENCES `mydb`.`Categoria` (`idCategoria` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `codigofacilito_carrito`.`Oferta`
+-- Table `mydb`.`Oferta`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Oferta` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`Oferta` (
   `idOferta` INT NOT NULL AUTO_INCREMENT ,
   `idProducto` INT NOT NULL ,
   `descuento` DOUBLE NOT NULL ,
@@ -148,16 +148,16 @@ CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Oferta` (
   INDEX `fk_Oferta_Producto1_idx` (`idProducto` ASC) ,
   CONSTRAINT `fk_Oferta_Producto1`
     FOREIGN KEY (`idProducto` )
-    REFERENCES `codigofacilito_carrito`.`Producto` (`idProducto` )
+    REFERENCES `mydb`.`Producto` (`idProducto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `codigofacilito_carrito`.`Venta`
+-- Table `mydb`.`Venta`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Venta` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`Venta` (
   `idVenta` INT NOT NULL AUTO_INCREMENT ,
   `idComprador` INT NOT NULL ,
   `idProducto` INT NOT NULL ,
@@ -170,33 +170,33 @@ CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Venta` (
   INDEX `fk_Venta_Cupon1_idx` (`idCupon` ASC) ,
   CONSTRAINT `fk_Venta_Usuario1`
     FOREIGN KEY (`idComprador` )
-    REFERENCES `codigofacilito_carrito`.`Usuario` (`idUsuario` )
+    REFERENCES `mydb`.`Usuario` (`idUsuario` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Venta_Producto1`
     FOREIGN KEY (`idProducto` )
-    REFERENCES `codigofacilito_carrito`.`Producto` (`idProducto` )
+    REFERENCES `mydb`.`Producto` (`idProducto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Venta_Cupon1`
     FOREIGN KEY (`idCupon` )
-    REFERENCES `codigofacilito_carrito`.`Cupon` (`idCupon` )
+    REFERENCES `mydb`.`Cupon` (`idCupon` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `codigofacilito_carrito`.`Etiqueta`
+-- Table `mydb`.`Etiqueta`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `codigofacilito_carrito`.`Etiqueta` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`Etiqueta` (
   `nombre` VARCHAR(50) NOT NULL ,
   `idProducto` INT NOT NULL ,
   PRIMARY KEY (`nombre`, `idProducto`) ,
   INDEX `fk_Etiqueta_Producto1_idx` (`idProducto` ASC) ,
   CONSTRAINT `fk_Etiqueta_Producto1`
     FOREIGN KEY (`idProducto` )
-    REFERENCES `codigofacilito_carrito`.`Producto` (`idProducto` )
+    REFERENCES `mydb`.`Producto` (`idProducto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
