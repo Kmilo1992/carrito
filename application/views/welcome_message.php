@@ -1,5 +1,7 @@
 <div class="row">
-	<? foreach ($productos->result() as $producto) { ?>
+	<? 
+		if($productos){
+		foreach ($productos->result() as $producto) { ?>
 		<div class="span7">
 			<div class="span3">
 				<img src="<?=base_url()?>imgsP/<?=$producto->url_img?>">
@@ -11,5 +13,5 @@
 				<button class="btn btn-inverse"> Comprar </button>
 			</div>
 		</div>
-	<? } ?>
+	<? }} ?>
 </div>
