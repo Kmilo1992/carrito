@@ -1,10 +1,16 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Login extends CI_Controller
-{
-	public function index(){
-		$this->load->library('session');
+class Login extends CI_Controller{
+
+	function __construct(){
+		parent::__construct();
 		$this->load->helper('url');
+		$this->load->library('session');
+	}
+
+	public function index(){
+		
+		$this->load->helper('form');
 		$this->load->model('login_model');
 
 		// IDSesion: usrTienda
@@ -22,19 +28,35 @@ class Login extends CI_Controller
 				$esUsuario = $this->login_model->es_usuario($usr,$pwd);
 
 				if($esUsuario){
-					$this->session->set_userdata('usrTienda',$isUser);
+					$this->session->set_userdata('usrTienda',$esUsuario);
+					redirect(base_url(),'refresh');
 				}else{//Usuario/Contrasena incorrecta
-					$data['logged'] = false;
+					$data['loggeado'] = false;
 					$data['failure'] = true;
 
-					$this->load->view('login');
-
+					$this->load->view('layouts/header',$data);
+					$this->load->view('acceso/login',$data);
+					$this->load->view('layouts/footer');
 				}
-			}else//No se envio informacion
-				redirect(base_url(),'refresh');
+			}else{
+				//No se envio informacion
+				$data['loggeado'] = false;
+				$data['failure'] = false;
+
+				$this->load->view('layouts/header',$data);
+				$this->load->view('acceso/login',$data);
+				$this->load->view('layouts/footer');
+			}
 
 		}
 	}//Fin index()
+
+
+	public function logout(){
+		$this->session->sess_destroy();		
+		redirect(base_url(),'refresh');
+	}
+
 }
 
 ?>

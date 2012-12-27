@@ -3,14 +3,24 @@
 class Welcome extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('productos_model');		
+		$this->load->model('productos_model');	
+		$this->load->library('session');	
 	}
 	public function index()
 	{
 		$data['productos'] = $this->productos_model->obtenerUltimos(5);
-		$this->load->view('layouts/header');
+
+		if($this->session->userdata('usrTienda'))
+			$data['loggeado'] = true;
+		else
+			$data['loggeado'] = false;
+
+		$this->load->view('layouts/header',$data);
 		$this->load->view('welcome_message',$data);
 		$this->load->view('layouts/footer');
+
+
+
 	}
 }
 /* End of file welcome.php */

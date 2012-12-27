@@ -18,6 +18,12 @@
 				<li>M&aacute;s vendidos</li>
 				<li>Perfil</li>
 				<li>Mi carrito</li>
+				<? if($loggeado) { ?>
+					<li><a href="./logout">Salir</a></li>
+				<? } else { ?>
+					<li><a href="./login">Entrar</a></li>
+				<? } ?>
+
 			</ul>
 		</nav>
 	</header>
