@@ -14,7 +14,6 @@ class Productos_model extends CI_Model {
 		return TRUE;
 	}
 	function obtenerUltimoId(){
-		
 		$qry = "SHOW TABLE STATUS WHERE name='producto'";
 		$ejec = $this->db->query($qry);
 			

@@ -14,13 +14,14 @@
 		<a href="<?= base_url()?>"><h1>My store</h1></a>
 		<nav id='n'>
 			<ul>
-				<li>Inicio</li>
+				<a href="<?= base_url()?>"><li>Inicio</li></a>
 				<li>M&aacute;s vendidos</li>
-				<li>Perfil</li>
-				<li>Mi carrito</li>
-				<? if($loggeado) { ?>
+				<? if($this->session->userdata('usrTienda')) { ?>
+					<li>Perfil</li>
+					<li>Mi carrito</li>
 					<li><a href="./logout">Salir</a></li>
 				<? } else { ?>
+					<li><a href="./registrar">Registrarse</a></li>
 					<li><a href="./login">Entrar</a></li>
 				<? } ?>
 

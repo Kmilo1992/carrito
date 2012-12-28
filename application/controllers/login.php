@@ -5,7 +5,7 @@ class Login extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->helper('url');
-		$this->load->library('session');
+		$this->load->library('');
 	}
 
 	public function index(){
@@ -23,7 +23,7 @@ class Login extends CI_Controller{
 			if($this->input->post('usr') && $this->input->post('pwd')){
 
 				$usr = $this->input->post('usr');
-				$pwd = $this->input->post('pwd');
+				$pwd = md5($this->input->post('pwd'));
 
 				$esUsuario = $this->login_model->es_usuario($usr,$pwd);
 
