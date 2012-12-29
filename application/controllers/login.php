@@ -31,19 +31,17 @@ class Login extends CI_Controller{
 					$this->session->set_userdata('usrTienda',$esUsuario);
 					redirect(base_url(),'refresh');
 				}else{//Usuario/Contrasena incorrecta
-					$data['loggeado'] = false;
 					$data['failure'] = true;
 
-					$this->load->view('layouts/header',$data);
+					$this->load->view('layouts/header');
 					$this->load->view('acceso/login',$data);
 					$this->load->view('layouts/footer');
 				}
 			}else{
 				//No se envio informacion
-				$data['loggeado'] = false;
-				$data['failure'] = false;
+				$data['failure'] = true;
 
-				$this->load->view('layouts/header',$data);
+				$this->load->view('layouts/header');
 				$this->load->view('acceso/login',$data);
 				$this->load->view('layouts/footer');
 			}

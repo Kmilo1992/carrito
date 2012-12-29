@@ -26,11 +26,11 @@
 </div>
 
 <?
-	if($failure){
+	if($failure==true){
 ?>
+	<div class="alert alert-error">
+		<span>Usuario/Contrase&ntilde;a incorrectos.</span>
+	</div>
 
-<div class="alert alert-error">
-	<span>Usuario/Contrase&ntilde;a incorrectos.</span>
-</div>
 <? } ?>
 </form>
