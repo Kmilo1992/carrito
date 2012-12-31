@@ -43,6 +43,7 @@ $route['404_override'] = '';
 $route['login'] = "login";
 $route['logout'] = "login/logout";
 $route['registrar'] = "usuarios/nuevo";
+$route['micarrito'] = "welcome/micarrito";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

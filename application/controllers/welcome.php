@@ -18,10 +18,13 @@ class Welcome extends CI_Controller {
 		$this->load->view('layouts/header',$data);
 		$this->load->view('welcome_message',$data);
 		$this->load->view('layouts/footer');
-
-
-
 	}
+	function miCarrito(){
+		$this->load->view('layouts/header');
+		$this->load->view('micarrito');
+		$this->load->view('layouts/footer');	
+	}
+	
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

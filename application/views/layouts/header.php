@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/base.css">
 	<script src="<?= base_url() ?>js/jquery.js"></script>
 	<script src="<?= base_url() ?>js/modernizr.js"></script>
+	<script src="<?= base_url() ?>js/persistence.js"></script>
 	<meta charset='utf-8'>
 </head>
 <body>
@@ -18,7 +19,7 @@
 				<li>M&aacute;s vendidos</li>
 				<? if($this->session->userdata('usrTienda')) { ?>
 					<li>Perfil</li>
-					<li>Mi carrito</li>
+					<li><a href='./micarrito'>Mi carrito</a></li>
 					<li><a href="./logout">Salir</a></li>
 				<? } else { ?>
 					<li><a href="./registrar">Registrarse</a></li>

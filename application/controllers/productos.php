@@ -43,5 +43,15 @@ class Productos extends CI_Controller {
         }
 		redirect(base_url());
 	}
+	function productoCarrito(){
+		$id = $this->input->post('id');
+		$obj = $this->productos_model->obtenerProducto($id);
+		$producto = $obj->result()[0];
+		$datos = array(
+			'nombre'=>$producto->nombre,
+			'precio'=>$producto->precio
+		);
+		echo json_encode($datos);
+	}
 }
 ?>
