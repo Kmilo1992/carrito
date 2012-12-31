@@ -13,8 +13,12 @@
 		$(function(){
 			var v = 0;
 			$('.buscar-icon').on('click',function(){
+
 				if(v%2 != 0) moBuscar(0);
-				else moBuscar(80);
+				else{
+					moBuscar(80);
+					$('.input-s').focus();
+				} 
 				v++;
 			})
 		})
@@ -37,19 +41,19 @@
 					<li>M&aacute;s vendidos</li>
 					<? if($this->session->userdata('usrTienda')) { ?>
 						<li>Perfil</li>
-						<li><a href='<?= base_url() ?>/micarrito'>Mi carrito</a></li>
-						<li><a href="<?= base_url() ?>/logout">Salir</a></li>
+						<li><a href='<?= base_url() ?>micarrito'>Mi carrito</a></li>
+						<li><a href="<?= base_url() ?>logout">Salir</a></li>
 					<? } else { ?>
-						<li><a href="<?= base_url() ?>/registrar">Registrarse</a></li>
-						<li><a href="<?= base_url() ?>/login">Entrar</a></li>
+						<li><a href="<?= base_url() ?>registrar">Registrarse</a></li>
+						<li><a href="<?= base_url() ?>login">Entrar</a></li>
 					<? } ?>
-					<li class="buscar-icon"><img src="<?= base_url() ?>/imgs/search-icon-w.png" /></li>
+					<li class="buscar-icon"><img src="<?= base_url() ?>imgs/search-icon-w.png" /></li>
 
 				</ul>
 			</nav>
 		</div>
 		<section id="s">
-			<form class="ss form-search" action="./buscar/" type="get">
+			<form class="ss form-search" action="<?= base_url() ?>buscar/" type="get">
 				<div class="input-append input-sd">
 					<input type="text" class="search-query input-s" name="qry" placeholder="Buscar">
 					<button type="submit" class="btn">Buscar</button>
