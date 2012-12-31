@@ -5,11 +5,16 @@ body,html{
 	background-color: #E2E1D7;
 	font-family: Arial, "Helvetica";
 }
+header{
+	position: relative;
+}
 #h{
-	background: url(../imgs/back.png);
+	background: #3e332e url(../imgs/back.png);
 	color: #E2E1D7;
+	position:relative;
 	font-weight: bolder;
-	padding: 10px;
+	z-index: 1;
+	padding: 10px 0;
 }
 #h a{
 	color: inherit;
@@ -78,4 +83,35 @@ form{
 .input input{
 	width: 30%;
 	
+}
+
+#s{
+	background: #3e332e;
+	position:absolute;
+	width: 100%;
+	top:0;
+	z-index: 0;
+}
+
+#s .ss{
+	padding: 10px 10px;
+	margin:0 ;
+}
+
+.input-s{
+	position: relative;
+	width: 90%;
+}
+
+.input-sd{
+	width: 100%;
+}
+
+.buscar-icon{
+	vertical-align: middle;
+	width: 20px;	
+}
+
+.buscar-icon img{
+	width: 100%;
 }

@@ -39,7 +39,7 @@ class Login extends CI_Controller{
 				}
 			}else{
 				//No se envio informacion
-				$data['failure'] = true;
+				$data['failure'] = false;
 
 				$this->load->view('layouts/header');
 				$this->load->view('acceso/login',$data);

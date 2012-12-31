@@ -44,6 +44,6 @@ $route['login'] = "login";
 $route['logout'] = "login/logout";
 $route['registrar'] = "usuarios/nuevo";
 $route['micarrito'] = "welcome/micarrito";
-
+$route['buscar'] = "buscar";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
