@@ -24,8 +24,12 @@
 
 			$snt .=  ") OR  idProducto IN (SELECT idProducto FROM producto WHERE nombre LIKE '%$cad%')";
 			
+			$res = $this->db->query($snt);
 
-			return $snt;
+			if($res->num_rows()>0)
+				return $res;
+			else
+				return false;
 		}
 	}
 

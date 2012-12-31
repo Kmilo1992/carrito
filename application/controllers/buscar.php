@@ -9,8 +9,8 @@
 			$qry = $this->input->get('qry');
 			$palabras = explode(' ', $qry);
 
-			echo $this->buscar_model->buscar($palabras);
-
+			$data['productos'] = $this->buscar_model->buscar($palabras);
+			$this->load->view('welcome_message',$data);
 			$this->load->view('layouts/footer');
 		}
 

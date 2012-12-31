@@ -15,7 +15,7 @@
 			if($res->num_rows()>0)
 				return $res->row();
 			else
-				false;
+				return false;
 		}
 	}
 
