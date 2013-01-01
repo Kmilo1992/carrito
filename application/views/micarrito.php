@@ -15,21 +15,20 @@
 
 			var idProducto = arregloProductos[i];
 			$.ajax({
+				beforeSend: function(){console.log(idProducto)},
 				type: "POST",
 				url: " <?=base_url()?>productos/productoCarrito",
 				data: {id:idProducto},
 				dataType: 'JSON',
 				success: function(data){
-
 					console.log(data);
 					costo_total += parseFloat(data.precio);
 					$('#total').text(costo_total);
-
 					tabla += formarColumna(data);
 					$("#tablaProductos").html(tabla);			
 				}
 			}).error(function(e,v){
-				alert("Error al obtener: " + idProducto);
+				console.log(e)
 			});
 		}
 		$('#borrar').on('click',function(){
