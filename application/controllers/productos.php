@@ -46,7 +46,7 @@ class Productos extends CI_Controller {
 	function productoCarrito(){
 		$id = $this->input->post('id');
 		$obj = $this->productos_model->obtenerProducto($id);
-		$producto = $obj->result()[0];
+		$producto = $obj->row();
 		$datos = array(
 			'nombre'=>$producto->nombre,
 			'precio'=>$producto->precio
