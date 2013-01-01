@@ -6,11 +6,15 @@
 			$this->load->view('layouts/header');
 			$this->load->model('buscar_model');
 
-			$qry = $this->input->get('qry');
-			$palabras = explode(' ', $qry);
-
-			$data['productos'] = $this->buscar_model->buscar($palabras);
-			$this->load->view('welcome_message',$data);
+			if($this->input->get('qry') && strlen($this->input->get('qry'))>=2){
+				$qry = $this->input->get('qry');
+				$palabras = explode(' ', $qry);
+				$data['productos'] = $this->buscar_model->buscar($palabras);
+			}else{
+				$data['productos'] = false;
+			}
+			
+			$this->load->view('productos/buscar',$data);
 			$this->load->view('layouts/footer');
 		}
 

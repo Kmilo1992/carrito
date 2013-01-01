@@ -14,7 +14,11 @@
 				<button class="btn btn-inverse comprar" data-id="<?= $producto->idProducto ?>"> Comprar </button>
 			</div>
 		</div>
-	<? }} ?>
+	<? }} else{ ?>
+		<div class="alert alert-info">
+			<h4>No encontramos productos con ese criterio de b&uacute;squeda. ¡Vuelve a intentar!</h4>
+		</div>
+	<? } ?>
 </div>
 <script>
 	$(document).on("ready",init);

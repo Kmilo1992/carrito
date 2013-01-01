@@ -12,4 +12,4 @@ SELECT oferta.idOferta, oferta.idProducto, (producto.precio-(producto.precio * o
 
 
 
-SELECT idProducto FROM producto WHERE idProducto IN (SELECT idProducto FROM etiqueta WHERE nombre = '' ) OR  idProducto IN (SELECT idProducto FROM producto WHERE nomre LIKE "% %");
+SELECT idProducto FROM producto WHERE idProducto IN (SELECT idProducto FROM etiqueta WHERE nombre = '' ) OR  idProducto IN (SELECT idProducto FROM producto WHERE nombre LIKE "% %");
