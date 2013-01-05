@@ -62,6 +62,7 @@ class Ventas extends CI_Controller {
             $this->load->view('ventas/completado',$data);
             $this->load->view('layouts/footer');
         }
+        
    }
    function error(){
         $data['respuesta'] = 1;

@@ -11,6 +11,7 @@
 				<h1><?= $producto->nombre ?></h1>
 				<p><strong>Existencia: </strong> <?= $producto->exitencia ?> </p>
 				<p><strong>Precio: </strong> <?= $producto->precio ?>usd </p>
+				<p><strong>Cantidad </strong><input type='number' data-idP="<?= $producto->idProducto ?>" min='1' max='5' value='1' class='cantidad'></p>
 				<button class="btn btn-inverse comprar" data-id="<?= $producto->idProducto ?>"> Comprar </button>
 			</div>
 		</div>
@@ -21,7 +22,9 @@
 	function init(){
 		$('.comprar').on('click', function(){
 			var id = $(this).data('id');
-			if(agregarProducto(id)){
+			var selectorCantidad=".cantidad[data-idP="+$(this).data('id')+"]";
+			var cantidad = $(selectorCantidad).val();
+			if(agregarProductos(id,cantidad)){
 				$('#info').addClass('alert-success');
 				$('#info').text('¡Tu producto ha sido agregado!');
 				$('#info').slideDown('slow');

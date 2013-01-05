@@ -48,6 +48,7 @@ class Productos extends CI_Controller {
 		$obj = $this->productos_model->obtenerProducto($id);
 		$producto = $obj->result()[0];
 		$datos = array(
+			'idProducto'=>$producto->idProducto,
 			'nombre'=>$producto->nombre,
 			'precio'=>$producto->precio
 		);
