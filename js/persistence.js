@@ -1,5 +1,6 @@
 function agregarProductos(idProducto,cantidad){
 	cantidad = typeof cantidad !== 'undefined' ? cantidad : 1;
+	if(!isFinite(cantidad)) return false;
 	if(validarNavegador()){
 		if(localStorage['carrito_productos_ids']){
 			var idsProductos=JSON.parse(localStorage['carrito_productos_ids']);	

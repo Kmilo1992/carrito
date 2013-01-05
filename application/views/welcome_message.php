@@ -18,26 +18,43 @@
 	<? }} ?>
 </div>
 <script>
+	var intervalo;
 	$(document).on("ready",init);
 	function init(){
 		$('.comprar').on('click', function(){
+			
 			var id = $(this).data('id');
 			var selectorCantidad=".cantidad[data-idP="+$(this).data('id')+"]";
 			var cantidad = $(selectorCantidad).val();
+			if(!cantidad) {
+				$('#info').slideUp('slow',error);
+				return;
+			};
 			if(agregarProductos(id,cantidad)){
-				$('#info').addClass('alert-success');
-				$('#info').text('¡Tu producto ha sido agregado!');
-				$('#info').slideDown('slow');
-				desaparecer();
+				$('#info').slideUp('slow',bien);
 			}
 			else{
-				$('#info').addClass('alert-error');
-				$('#info').text('Algo salió mal, intenta de nuevo.');
-				$('#info').slideDown('slow');	
+				$('#info').slideUp('slow',error);
 			}
 		});
 	}
 	function desaparecer(){
-		setTimeout(function(){$('#info').slideUp('slow');},4000);	
+		intervalo = setTimeout(function(){$('#info').slideUp('slow');},4000);	
+	}
+	function bien(){
+		if(typeof intervalo !== "undefinded") window.clearInterval(intervalo);
+		$('#info').removeClass('alert-error');
+		$('#info').addClass('alert-success');
+		$('#info').text('¡Tu producto ha sido agregado!');
+		$('#info').slideDown('slow');
+		desaparecer();
+	}
+	function error(){
+		if(typeof intervalo !== "undefinded") window.clearInterval(intervalo);
+		$('#info').removeClass('alert-success');
+		$('#info').addClass('alert-error');
+		$('#info').text('Algo salió mal, intenta de nuevo.');
+		$('#info').slideDown('slow');	
+		desaparecer();
 	}
 </script>
