@@ -24,7 +24,6 @@
 				dataType: 'JSON',
 				success: function(data){
 					iterador++;
-					//console.log(data);
 					costo_total += parseFloat(data.precio);
 					$('#total').text(costo_total);
 					if(productos[data.idProducto])

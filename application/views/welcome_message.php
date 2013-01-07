@@ -22,7 +22,6 @@
 	$(document).on("ready",init);
 	function init(){
 		$('.comprar').on('click', function(){
-			
 			var id = $(this).data('id');
 			var selectorCantidad=".cantidad[data-idP="+$(this).data('id')+"]";
 			var cantidad = $(selectorCantidad).val();

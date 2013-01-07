@@ -4,6 +4,7 @@ class Ventas extends CI_Controller {
    function __construct(){
       parent::__construct();
       $this->load->library('paypal');
+      $this->load->model('ventas_model');
    }
    function crear(){
       $this->session->set_userdata('costoTotal',$this->uri->segment(3) + 10);
@@ -69,6 +70,13 @@ class Ventas extends CI_Controller {
         $this->load->view('layouts/header');
         $this->load->view('ventas/error',$data);
         $this->load->view('layouts/footer');
+   }
+   function agregarVenta(){
+      $id = 1;
+      //$cantidad = ;
+      $idC = $this->session->userdata('usrTienda')->idUsuario;
+      print_r($this->input->post('id'));
+      return $this->ventas_model->crearVenta($id,2,$idC); 
    }
 }
 ?>
