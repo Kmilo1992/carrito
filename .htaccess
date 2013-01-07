@@ -9,5 +9,8 @@ RewriteRule ^(application|system|\.svn) index.php/$1 [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
+
+RewriteRule ^design$ http://codigofacilito.com 
+RewriteRule ^design\/(.*)$ http://codigofacilito.com/$1 
 RewriteRule ^(.*)$ index.php/$1 [QSA,L]
 RewriteRule ^index.php\/^(css|js|imgs)$ $1 [QSA,L]
