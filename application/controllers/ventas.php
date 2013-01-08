@@ -47,17 +47,16 @@ class Ventas extends CI_Controller {
          print_r($response);
          if( is_array($response) && $response['ACK'] == 'Success') { 
              $transactionId = $response['PAYMENTINFO_0_TRANSACTIONID'];
-             $this->session->set_userdata('costoTotal',"listo");
-             header("Location: ".base_url()."ventas/listo"); 
+             $this->session->set_userdata('estalisto',"listo");
+             redirect(base_url()."ventas/listo");
          }
          else{
-            $this->session->set_userdata('costoTotal',"error");
-            header("Location: ".base_url()."ventas/error");   
+            print_r($response);
          }
       }
    }
    function listo(){
-        if(strcmp($this->session->userdata('costoTotal'), "listo")  == 0){
+        if(strcmp($this->session->userdata('estalisto'), "listo")  == 0){
             $data['respuesta'] = 1;
             $this->load->view('layouts/header');
             $this->load->view('ventas/completado',$data);
@@ -72,11 +71,16 @@ class Ventas extends CI_Controller {
         $this->load->view('layouts/footer');
    }
    function agregarVenta(){
-      $id = 1;
-      //$cantidad = ;
+      /*$id = 1;
+      
+      print_r($_POST);
+       */
       $idC = $this->session->userdata('usrTienda')->idUsuario;
-      print_r($this->input->post('id'));
-      return $this->ventas_model->crearVenta($id,2,$idC); 
+      if(isset($_POST['id']))
+        $id = $_POST['id'];
+      if(isset($_POST['id']))
+        $cantidad = $_POST['cantidad'];
+      return $this->ventas_model->crearVenta($id,$cantidad,$idC);
    }
 }
 ?>
