@@ -18,12 +18,13 @@
 					$('.input-tag').val('');
 			})
 
+
+			
 		})
 
 
 		function etiquetas() {
 
-			
 			var f = $('#tagC');
 
 			if($('.tag').size() == 0){
@@ -43,8 +44,36 @@
 
 		function nuevaEtiqueta(txt){
 			txt = txt.substring(0,txt.length-1);
-			$('<span class="tag"><span class="tagText">'+txt+'</span><span class="tagX"></span></span>').insertBefore('.input-tag');
+			$('<span class="tag"><span class="tagText">'+txt+'</span><span class="tagX" class=""><a href="#" class="close del-et">&times;</a></span></span>').insertBefore('.input-tag');
+			
+			$('.del-et').on('click',function(){
+				var self = $(this);
+				var padre = self.parents('.tag');
 
+				var txt = padre.children('.tagText').text();
+				var e = $('#enviar-etiquetas');
+				var v = e.val();
+
+				if((txt.split(" ")).length>1)
+					txt = '"'+txt+'"';
+
+				e.val(v.replace(txt,''));
+				padre.remove();
+
+				etiquetas();
+			})
+
+
+			var e = $('#enviar-etiquetas');
+			var v = e.val();
+
+			if((txt.split(" ")).length>1)
+				txt = '"'+txt+'"';
+
+			if(e != "")
+				v += " ";
+
+			e.val(v+txt);
 			etiquetas();
 		}
 
@@ -67,7 +96,7 @@
 		}
 
 		#tagC:hover{
-			outline:1px solid rgba(56,56,56,0.5);
+			outline:1px solid rgba(56,56,56,0.3);
 		}
 
 		.input-tag{
@@ -91,7 +120,7 @@
 		}
 
 		.tag{
-			background: rgba(56,56,56,1);
+			background: rgba(200,27,50,0.6);
 			display: inline-block;
 			border-radius: 5px;
 			height: 22px;
@@ -99,6 +128,13 @@
 			padding: 2px 5px;
 			margin: 2px;
 			position:relative;
+		}
+
+		.tagX{
+			vertical-align: middle;
+			display: inline-block;
+			width: 20px;
+			height: 22px;
 		}
 
 		.tagText{
@@ -110,6 +146,7 @@
 
 
 	<section id="tagC">
+		<input type="hidden" name="etiquetas" id="enviar-etiquetas" value=""/>
 		<input class="input-tag" type="text"/>
 	</section>
 
