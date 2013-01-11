@@ -15,6 +15,8 @@
 				//Falta validar que se haya digitado algo  y que no sean puras comas
 				if(e.which == 188 && ((t = $(this).val()).length) > 1 )
 					nuevaEtiqueta(t);
+				else if(e.which == 188)
+					$('.input-tag').val('');
 			})
 
 		})
@@ -25,28 +27,32 @@
 			tagsWidth = [];
 			rowWidth = 0;
 			filas = 0;
-			fatherWidth = $('#tagC').width();
 
-			$.each($tags,function(i){
-				var thisW = $(this).width();
-				
-				if((rowWidth + thisW) > fatherWidth){
-					tagsWidth[filas] = rowWidth;
-					filas++;
-					rowWidth = 0;
 
-					console.log(tagsWidth[filas])
-				}else{
-					rowWidth += thisW;
-				}
-			})
+			var t = $('.tag').last();
+			var f = $('#tagC');
+			var nuevoAncho = f.width() - (( t.offset().left - f.offset().left )+t.width())-25;
 
-			$('.input-tag').css('width',fatherWidth-tagsWidth-13).val('');
+			if(nuevoAncho < (f.width() * 0.20))
+				nuevoAncho = f.width();
+
+			$('.input-tag').css('width',nuevoAncho).val('');
+
+			console.log('.--.')
+			console.log(f.width())
+			console.log("\t ==")
+			console.log(f.offset().left)
+			console.log(t.position().left)
+			console.log("\t\t ==")
+			console.log(t.width())
+			console.log((f.width() - (f.offset().left  - t.position().left)-15))
+
 		}
 
 		function nuevaEtiqueta(txt){
 			txt = txt.substring(0,txt.length-1);
 			$('<span class="tag"><span class="tagText">'+txt+'</span><span class="tagX"></span></span>').insertBefore('.input-tag');
+
 			etiquetas();
 		}
 
@@ -94,11 +100,13 @@
 
 		.tag{
 			background: rgba(56,56,56,1);
+			display: inline-block;
 			border-radius: 5px;
 			height: 22px;
 			color:white;
-			padding: 2px;
+			padding: 2px 5px;
 			margin: 2px;
+			position:relative;
 		}
 
 		.tagText{
@@ -114,7 +122,7 @@
 			<span class="tagText">Etiqueta</span>
 			<span class="tagX"></span>
 		</span>
-		<input class="input-tag" type="text" style="display: block;width: 100%;"/>
+		<input class="input-tag" type="text"/>
 	</section>
 
 </body>
