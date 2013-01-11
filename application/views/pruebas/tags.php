@@ -12,7 +12,6 @@
 			etiquetas();
 
 			$('.input-tag').on('keyup',function(e){
-				//Falta validar que se haya digitado algo  y que no sean puras comas
 				if(e.which == 188 && ((t = $(this).val()).length) > 1 )
 					nuevaEtiqueta(t);
 				else if(e.which == 188)
@@ -23,29 +22,22 @@
 
 
 		function etiquetas() {
-			$tags = $('#tagC .tag');
-			tagsWidth = [];
-			rowWidth = 0;
-			filas = 0;
 
-
-			var t = $('.tag').last();
+			
 			var f = $('#tagC');
+
+			if($('.tag').size() == 0){
+				$('.input-tag').css('width',f.width()).val('');
+				return;
+			}
+			
+			var t = $('.tag').last();
 			var nuevoAncho = f.width() - (( t.offset().left - f.offset().left )+t.width())-25;
 
 			if(nuevoAncho < (f.width() * 0.20))
 				nuevoAncho = f.width();
 
 			$('.input-tag').css('width',nuevoAncho).val('');
-
-			console.log('.--.')
-			console.log(f.width())
-			console.log("\t ==")
-			console.log(f.offset().left)
-			console.log(t.position().left)
-			console.log("\t\t ==")
-			console.log(t.width())
-			console.log((f.width() - (f.offset().left  - t.position().left)-15))
 
 		}
 
@@ -118,10 +110,6 @@
 
 
 	<section id="tagC">
-		<span class="tag">
-			<span class="tagText">Etiqueta</span>
-			<span class="tagX"></span>
-		</span>
 		<input class="input-tag" type="text"/>
 	</section>
 
