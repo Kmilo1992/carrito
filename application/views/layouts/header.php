@@ -14,18 +14,27 @@
 			var v = 0;
 			$('.buscar-icon').on('click',function(){
 
-				if(v%2 != 0) moBuscar(0);
+				if(parseInt($('#s').css('top')) > 0){
+					moBuscar(0,null);
+					$('#main').off('click',"**");
+				}
 				else{
-					moBuscar(80);
+					moBuscar(80,function(){
+						$('#main').on('click',function(e){
+							if($(e.target).closest('#s').length == 0)
+								moBuscar(0,null);
+						})
+					});
 					$('.input-s').focus();
 				} 
-				v++;
 			})
+
+			
 		})
 
 
-		function moBuscar(t){
-			$("#s").animate({ top:t	});
+		function moBuscar(t,f){
+			$("#s").animate({ top:t	},'fast',f);
 		}
 
 	</script>
@@ -47,7 +56,7 @@
 						<li><a href="<?= base_url() ?>registrar">Registrarse</a></li>
 						<li><a href="<?= base_url() ?>login">Entrar</a></li>
 					<? } ?>
-					<li class="buscar-icon"><img src="<?= base_url() ?>imgs/search-icon-w.png" /></li>
+					<li class="buscar-icon"><img class="buscar-icon" src="<?= base_url() ?>imgs/search-icon-w.png" /></li>
 
 				</ul>
 			</nav>
