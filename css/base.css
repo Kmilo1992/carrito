@@ -49,14 +49,51 @@ header{
 }
 #n ul li{
 	display: inline-block;
+	position: relative;
 	padding: 5px;
 }
-#n ul li:hover{
+#n ul li:hover,#n ul li ul li:hover{
 	background-color: #E2E1D7;
 	color: #000;
 	border-radius: 2px;
 	cursor: pointer;
 }
+
+#n ul li:hover ul{
+	display: block;
+}
+
+#n ul li ul{
+	display: none;
+	background: #333;
+	right: 0;
+	margin:5px -3px;
+	min-width: 50px;
+	padding: 5px 0;
+	position: absolute;
+}
+
+#n ul li ul li{
+	padding: 0;
+	display: block;
+}
+
+#n ul li ul li a{
+	color:#E2E1D7;
+	border-radius: 0;
+	display: block;
+	height: 100%;
+	padding: 8px 20px;
+	line-height: 20px;
+	white-space: nowrap;
+}
+
+
+
+#n ul li ul li a:hover{
+	color: #333
+}
+
 .title{
 	font-family: 'BazarMedium';
 	font-weight: bolder;

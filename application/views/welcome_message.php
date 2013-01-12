@@ -1,7 +1,6 @@
 <div class="alert" id='info' style="display:none;"></div>
 <div class="row">
 	<? 
-	 echo 'php.ini: ', get_cfg_var('cfg_file_path'); 
 		if($productos){
 		foreach ($productos->result() as $producto) { ?>
 		<div class="span7">

@@ -28,7 +28,8 @@ class Login extends CI_Controller{
 				$esUsuario = $this->login_model->es_usuario($usr,$pwd);
 
 				if($esUsuario){
-					$this->session->set_userdata('usrTienda',$esUsuario);
+					$this->session->set_userdata('usrTienda',$esUsuario['usr']);
+					$this->session->set_userdata('usrTipo',$esUsuario['tipo']);
 					redirect(base_url(),'refresh');
 				}else{//Usuario/Contrasena incorrecta
 					$data['failure'] = true;

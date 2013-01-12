@@ -48,10 +48,27 @@
 				<ul>
 					<a href="<?= base_url() ?>"><li>Inicio</li></a>
 					<li>M&aacute;s vendidos</li>
-					<? if($this->session->userdata('usrTienda')) { ?>
-						<li>Perfil</li>
-						<li><a href='<?= base_url() ?>micarrito'>Mi carrito</a></li>
-						<li><a href="<?= base_url() ?>logout">Salir</a></li>
+					<li><a href='<?= base_url() ?>micarrito'>Mi carrito</a></li>
+					<li> Perfil
+					<? if($this->session->userdata('usrTienda')) { 
+							if($this->session->userdata('usrTipo') == '0') {
+					?>
+						
+						<ul>
+							<li><a href="<?= base_url() ?>productos/nuevo">Nuevo Producto</a></li>
+							<li><a href="<?= base_url() ?>logout">Salir</a></li>
+						</ul>
+						
+					<? } else { ?>
+
+						<ul>
+							<li><a href="<?= base_url() ?>perfil/compras">Compras</a></li>
+							<li><a href="<?= base_url() ?>perfil/direcciones">Direcciones de Envío</a></li>
+							<li><a href="<?= base_url() ?>logout">Salir</a></li>
+						</ul>
+
+					<? }  ?> 
+					</li>
 					<? } else { ?>
 						<li><a href="<?= base_url() ?>registrar">Registrarse</a></li>
 						<li><a href="<?= base_url() ?>login">Entrar</a></li>
