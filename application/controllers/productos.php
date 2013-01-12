@@ -34,7 +34,8 @@ class Productos extends CI_Controller {
 				'nombre' => $this->input->post('nombre'),
 				'existencia' => $this->input->post('existencia'),
 				'costo' => $this->input->post('costo'),
-				'url' => $idImg.$datos_img["file_ext"]
+				'url' => $idImg.$datos_img["file_ext"],
+				'etiquetas' => limpiarEtiquetas($this->input->post('etiquetas'))
 			);
         	$this->productos_model->guardar($data);	
         }
@@ -43,6 +44,22 @@ class Productos extends CI_Controller {
         }
 		redirect(base_url());
 	}
+
+	private function limpiarEtiquetas($etiquetas){
+		$etis = explode(',', $etiquetas);
+		$etq = array();
+
+		foreach ($etis as $etiqueta) {
+			$etiqueta = trim($etiqueta);
+			$etiqueta = htmlspecialchars($etiqueta,"UTF-8");
+			array_push($etq, $etiqueta);
+		}
+
+
+		return $etq;
+	}
+
+
 	function productoCarrito(){
 		$id = $this->input->post('id');
 		$obj = $this->productos_model->obtenerProducto($id);

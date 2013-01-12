@@ -55,7 +55,7 @@
 		<section id="s">
 			<form class="ss form-search" action="<?= base_url() ?>buscar/" type="get">
 				<div class="input-append input-sd">
-					<input type="text" class="search-query input-s" name="qry" placeholder="Buscar">
+					<input type="text" class="search-query input-s" autocomplete="off" name="qry" placeholder="Buscar">
 					<button type="submit" class="btn">Buscar</button>
 				</div>
 			</form>
